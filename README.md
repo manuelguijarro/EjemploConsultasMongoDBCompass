@@ -10,7 +10,7 @@ Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB
 
 ## Consultas
 
-### Consulta 1: Seleccionar los 10 primeros Pokémon con 2 evoluciones siguientes
+#### Consulta 1: Seleccionar los 10 primeros pokemon que tengan 2 evoluciones siguientes. Ordenar la salida por nombre del pokemon Ascendente (Z a la A).
 
 ```java
 // Código Java para la consulta 1
