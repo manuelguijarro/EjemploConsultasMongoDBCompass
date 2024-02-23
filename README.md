@@ -28,6 +28,8 @@ Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB
         }
     }
 ```
+<br>
+
 2. Seleccionar el segundo pokemon cuyo huevo eclosione a los 2 km.
 ```
     private static void ejercicio2() {
@@ -50,6 +52,8 @@ Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB
         }
     }
 ```
+<br>
+
 3. Mostrar todos los pokemon cuyo id sea mayor a 50 y menor que 60.
 ```
     private static void ejercicio3() {
@@ -71,6 +75,8 @@ Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB
         }
     }
 ```
+<br> 
+
 4. Mostrar todos los pokemon que sean una evolución intermedia (es decir, que tenga evolución previa y evolución siguiente). Se deberá mostrar sólo el nombre de ese pokemon, de la evolución previa y de la evolución siguiente.
 ```
 private static void ejercicio4() {
@@ -95,6 +101,32 @@ private static void ejercicio4() {
                 result.getList("prev_evolution", Document.class).forEach((pokemon) -> System.out.println("Nombre pokemon evolucion precesora: " + pokemon.getString("name")));
 
                 result.getList("next_evolution", Document.class).forEach((pokemon) -> System.out.println("Nombre pokemon evolucion siguiente: " + pokemon.getString("name")));
+            }
+        }
+    }
+```
+<br> 
+
+5. Mostrar los pokemon que tengan el campo candy_count y que "Grass" NO esté entre sus debilidades.
+```
+private static void ejercicio5() {
+
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+
+            MongoDatabase database = mongoClient.getDatabase("pokemon");
+            MongoCollection<Document> collection = database.getCollection("listapokemon");
+
+            List<Document> results = new ArrayList<>();
+
+            Bson existsComparison = and(exists("candy_count"), nin("weaknesses","Grass"));
+
+            collection.find(existsComparison).into(results);
+
+            for (Document result:results) {
+
+                System.out.println("-POKEMON-");
+                System.out.println(result);
+                
             }
         }
     }

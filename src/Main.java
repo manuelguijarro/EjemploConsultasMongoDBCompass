@@ -7,6 +7,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.*;
@@ -22,7 +23,7 @@ public class Main {
         //ejercicio2();
         //ejercicio3();
         //ejercicio4();
-
+        ejercicio5();
     }
 
 
@@ -105,6 +106,28 @@ public class Main {
                 result.getList("prev_evolution", Document.class).forEach((pokemon) -> System.out.println("Nombre pokemon evolucion precesora: " + pokemon.getString("name")));
 
                 result.getList("next_evolution", Document.class).forEach((pokemon) -> System.out.println("Nombre pokemon evolucion siguiente: " + pokemon.getString("name")));
+            }
+        }
+    }
+
+    private static void ejercicio5() {
+
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+
+            MongoDatabase database = mongoClient.getDatabase("pokemon");
+            MongoCollection<Document> collection = database.getCollection("listapokemon");
+
+            List<Document> results = new ArrayList<>();
+
+            Bson existsComparison = and(exists("candy_count"), nin("weaknesses","Grass"));
+
+            collection.find(existsComparison).into(results);
+
+            for (Document result:results) {
+
+                System.out.println("-POKEMON-");
+                System.out.println(result);
+
             }
         }
     }
