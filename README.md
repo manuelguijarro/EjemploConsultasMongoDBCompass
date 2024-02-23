@@ -8,6 +8,11 @@ Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB
 2. Carga el archivo JSON adjunto en tu base de datos MongoDB.
 3. Ejecuta el código Java para realizar las consultas especificadas.
 
+## Recursos
+
+- [MongoDB](https://www.mongodb.com/)
+- [Java MongoDB Driver](https://mongodb.github.io/mongo-java-driver/)
+
 ## Consultas
 1.  Seleccionar los 10 primeros pokemon que tengan 2 evoluciones siguientes. Ordenar la salida por nombre del pokemon Ascendente (Z a la A).
 ```
