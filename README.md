@@ -1,4 +1,4 @@
-# Proyecto Pokémon Java
+# Consultas MongoDB Pokémon Java
 
 Este proyecto tiene como objetivo realizar consultas a una base de datos MongoDB utilizando Java para trabajar con datos de Pokémon.
 
